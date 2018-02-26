@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<jsp:include page="header.jsp" />
 
 <html>
 
@@ -161,3 +161,4 @@
 </body>
 
 </html>
+<jsp:include page="footer.jsp" />

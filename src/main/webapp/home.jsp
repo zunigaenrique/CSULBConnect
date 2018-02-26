@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:include page="header.jsp"/>
 
 <html>
 
@@ -31,6 +29,13 @@
 
 </table>
 
+<div class="container .col-xs-6 .col-md-4">
+    <a href="login" class="btn btn-link">Login
+    </a>
+</div>
+
 </body>
 
 </html>
+
+<jsp:include page="footer.jsp" />
