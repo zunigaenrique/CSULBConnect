@@ -32,7 +32,7 @@ public class RegistrationController {
 
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
 
-        ModelAndView mav = new ModelAndView("register");
+        ModelAndView mav = new ModelAndView("demo/register");
 
         mav.addObject("user", new User());
 

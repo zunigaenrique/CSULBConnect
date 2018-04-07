@@ -1,5 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 
 <html>
 <head>
@@ -47,4 +47,4 @@
 </table>
 </body>
 </html>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../footer.jsp"/>

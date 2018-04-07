@@ -31,7 +31,7 @@
 
     <tr>
 
-        <td><a href="home.jsp">Home</a>
+        <td><a href="demo/home.jsp">Home</a>
 
         </td>
 

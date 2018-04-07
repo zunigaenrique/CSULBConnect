@@ -16,33 +16,33 @@
                     <h2>Sign Up</h2>
                     <hr />
 
-                    <form class="align-items-center boxcontent">
+                    <form class="align-items-center boxcontent" id="regForm">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-2 col-form-label">Name</label>
+                            <label for="regName" class="col-2 col-form-label">Name</label>
                             <div class="col-10">
-                                <input class="form-control" type="text" value="Name" id="example-text-input">
+                                <input class="form-control" type="text" name="regName" placeholder="Name" id="regName">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Email</label>
+                            <label for="regEmail" class="col-2 col-form-label">Email</label>
                             <div class="col-10">
-                                <input class="form-control" type="search" value="CSULB email" id="example-search-input">
+                                <input class="form-control" type="email" name="regEmail" placeholder="Email" id="regEmail">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-email-input" class="col-2 col-form-label">Password</label>
+                            <label for="regPass" class="col-2 col-form-label">Password</label>
                             <div class="col-10">
-                                <input class="form-control" type="email" value="password" id="example-email-input">
+                                <input class="form-control" type="password" name="regPass" placeholder="Password" id="regPass">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-email-input" class="col-2 col-form-label">Confirm</label>
+                            <label for="regConfirm" class="col-2 col-form-label">Confirm</label>
                             <div class="col-10">
-                                <input class="form-control" type="email" value="password" id="example-email-input">
+                                <input class="form-control" type="password" name="regConfirm" placeholder="Password" id="regConfirm">
                             </div>
                         </div>
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="regSubmit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -61,9 +61,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-email-input" class="col-2 col-form-label">Password</label>
+                            <label for="loginEmail" class="col-2 col-form-label">Password</label>
                             <div class="col-10">
-                                <input class="form-control" type="email" value="password"" id="example-email-input">
+                                <input class="form-control" type="email" value="password" id="loginEmail">
                             </div>
                         </div>
                         <div class="col text-center">
@@ -82,9 +82,13 @@
     </div>
 </div>
 
-
 <%@include file="resources/footer.jsp"%>
-
+<%--pw strength--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/lib/zxcvbn.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/formValidation.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/fv_bs.js"></script>
+<script src="${pageContext.request.contextPath}/resources/login.js"></script>
 
 </body>
 </html>
+

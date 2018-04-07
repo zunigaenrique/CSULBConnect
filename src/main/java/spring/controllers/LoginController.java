@@ -32,7 +32,7 @@ public class LoginController {
 
     public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 
-        ModelAndView mav = new ModelAndView("login");
+        ModelAndView mav = new ModelAndView("demo/login");
 
         mav.addObject("login", new Login());
 
@@ -58,7 +58,7 @@ public class LoginController {
 
         } else {
 
-            mav = new ModelAndView("login");
+            mav = new ModelAndView("demo/login");
 
             mav.addObject("message", "Username or Password is wrong!!");
 
