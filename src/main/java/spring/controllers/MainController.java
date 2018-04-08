@@ -6,15 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import spring.models.Signup;
-import spring.services.RegisterService;
 import spring.services.UserService;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 
@@ -22,10 +19,8 @@ import java.util.logging.Logger;
 public class MainController {
     private Logger logger= Logger.getLogger(MainController.class.getName());
     @ Autowired
-    public RegisterService registerService=new RegisterService();
+    public UserService userService;
 
-    @Autowired
-    UserService userService;
     @RequestMapping(value="/index", method= RequestMethod.GET)
     public ModelAndView test(HttpServletRequest request, HttpServletResponse response) {
 
@@ -52,7 +47,7 @@ public class MainController {
         ModelAndView mav = new ModelAndView("registerconf");
         System.out.print(signup.toString());
         try {
-            registerService.register(signup);
+            userService.register(signup);
         } catch (Exception e) {
             response.sendError(500);
         }
@@ -73,7 +68,7 @@ public class MainController {
         int confirmationNumber=Integer.parseInt(confirmationNumberStr);
 
         try {
-            registerService.confirm(confirmationEmail,confirmationNumber);
+            userService.confirm(confirmationEmail,confirmationNumber);
         } catch (Exception e) {
             logger.warning("exception caught in controller");
 

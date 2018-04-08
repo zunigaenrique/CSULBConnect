@@ -8,11 +8,9 @@
 
     <context:annotation-config />
 
-    <bean id="userService" class="spring.services.UserServiceImpl" />
 
-    <bean id="userDao" class="spring.DAOs.UserDaoImpl" />
-    <bean id="registerService" class="spring.services.RegisterService" />
-    <bean id="signupDao" class="spring.DAOs.SignupDaoImpl" />
+    <bean id="registerService" class="spring.services.UserService" />
+    <bean id="signupDao" class="spring.DAOs.UserDao" />
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 
