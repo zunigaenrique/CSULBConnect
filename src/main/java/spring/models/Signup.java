@@ -5,7 +5,8 @@ package spring.models;
  */
 public class Signup {
     private String sEmail;
-    private String sName;
+    private String sFirstName;
+    private String sLastName;
     private String sPassword;
     private int sCode;
 
@@ -17,12 +18,20 @@ public class Signup {
         this.sEmail = sEmail;
     }
 
-    public String getsName() {
-        return sName;
+    public String getsFirstName() {
+        return sFirstName;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName;
+    public void setsFirstName(String sFirstName) {
+        this.sFirstName = sFirstName;
+    }
+
+    public String getsLastName() {
+        return sLastName;
+    }
+
+    public void setsLastName(String sLastName) {
+        this.sLastName = sLastName;
     }
 
     public String getsPassword() {
@@ -39,5 +48,15 @@ public class Signup {
 
     public void setsCode(int sCode) {
         this.sCode = sCode;
+    }
+
+    public String toString() {
+        return "Signup{" +
+                "sEmail='" + sEmail + '\'' +
+                ", sFirstName='" + sFirstName + '\'' +
+                ", sLastName='" + sLastName + '\'' +
+                ", sPassword='" + sPassword + '\'' +
+                ", sCode=" + sCode +
+                '}';
     }
 }

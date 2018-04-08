@@ -31,11 +31,18 @@ public class SignupDaoImpl implements SignupDao {
     JdbcTemplate jdbcTemplate;
 
     public void register(Signup signup) {
+        String sql = "insert into signup values (?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[] {signup.getsEmail(),signup.getsFirstName(),signup.getsPassword(),signup.getsCode(),signup.getsLastName()});
+    }
 
-        String sql = "insert into signup values(?,?,?,?)";
-
-        jdbcTemplate.update(sql, new Object[] {signup.getsEmail(),signup.getsName(),signup.getsPassword(),signup.getsCode()});
-
+    public boolean confirm(String confirmationEmail, int confirmationNumber) {
+        String sql="select * from signup where sEmail='"+confirmationEmail+"'";
+        List<Signup> signups=jdbcTemplate.query(sql, new SignupMapper());
+        if(signups.get(0).getsCode()==confirmationNumber){
+            //MOVE USER TO USER TABLE
+            return true;
+        }
+        return false;
     }
 
 //    public User validateUser(Login login) {
@@ -57,12 +64,12 @@ class SignupMapper implements RowMapper<Signup> {
     public Signup mapRow(ResultSet rs, int arg1) throws SQLException {
 
         Signup signup=new Signup();
-        signup.setsName(rs.getString("sName"));
-        //signup.setsEmail(rs.getString("sEmail"));
+        signup.setsFirstName(rs.getString("sFirstName"));
+        signup.setsLastName(rs.getString("sLastName"));
+        signup.setsEmail(rs.getString("sEmail"));
         signup.setsCode(rs.getInt("sCode"));
 
         return signup;
-
     }
 
 }

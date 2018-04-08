@@ -13,6 +13,7 @@ import spring.services.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
@@ -37,31 +38,53 @@ public class MainController {
     }
     @RequestMapping(value="/reg", method= RequestMethod.GET)
     public ModelAndView reg(HttpServletRequest request, HttpServletResponse response) {
-
-        ModelAndView mav = new ModelAndView("reg");
-        logger.warning("ABCD");
-//        mav.addObject("", new Login());
-
+        ModelAndView mav = new ModelAndView("login");
         return mav;
 
     }
     @RequestMapping(value="/reg", method= RequestMethod.POST)
-    public HttpServletResponse regSubmit(HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException{
-
-        //ModelAndView mav = new ModelAndView("reg");
-        logger.warning("abcd"+request.getParameter("regName"));
+    public ModelAndView regSubmit(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Signup signup=new Signup();
         signup.setsEmail(request.getParameter("regEmail"));
-        signup.setsName(request.getParameter("regName"));
+        signup.setsFirstName(request.getParameter("regName"));
+        signup.setsLastName(request.getParameter("regLName"));
         signup.setsPassword(request.getParameter("regPass"));
+        ModelAndView mav = new ModelAndView("registerconf");
+        System.out.print(signup.toString());
+        try {
+            registerService.register(signup);
+        } catch (Exception e) {
+            response.sendError(500);
+        }
+        return mav;
+    }
 
-        logger.warning(signup.getsPassword());
-        registerService.register(signup);
+    @RequestMapping(value="/conf", method= RequestMethod.GET)
+    public ModelAndView confirm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        ModelAndView mav = new ModelAndView("registerconf");
+        return mav;
+    }
 
+    @RequestMapping(value="/regConfirm", method=RequestMethod.POST)
+    public ModelAndView response(HttpServletRequest request, HttpServletResponse response) throws IOException {
+       String confirmationNumberStr=(request.getParameter("cCode"));
+      String confirmationEmail=request.getParameter("cEmail");
+        logger.warning(confirmationNumberStr+confirmationEmail);
+        int confirmationNumber=Integer.parseInt(confirmationNumberStr);
 
+        try {
+            registerService.confirm(confirmationEmail,confirmationNumber);
+        } catch (Exception e) {
+            logger.warning("exception caught in controller");
 
-        return response;
-
+            e.printStackTrace();
+        ModelAndView mav=new ModelAndView("blank");
+        mav.addObject("message","<h3 class=\"col text-center\">Please refresh and try again.</h3>");
+        return mav;
+        }
+        ModelAndView mav=new ModelAndView("blank");
+        mav.addObject("message","<h3 class=\"col text-center\">Success! You may now sign in.</h3>");
+        return mav;
     }
 
 }

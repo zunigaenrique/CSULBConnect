@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3726088941">
-    <data-source source="LOCAL" name="MySQL - springtest@35.184.152.186" uuid="28a43f4b-9fe7-4986-8b5b-c58e524b5e74">
+  <component name="DataSourceManagerImpl" format="xml" hash="2275284049">
+    <data-source source="LOCAL" name="MySQL - csulbconnect@csulbconnect.cbd57tt7k2cb.us-west-1.rds.amazonaws.com" uuid="9d77d420-bcde-4eea-875c-62419f9ea6f0">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://35.184.152.186:3306/springtest</jdbc-url>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="MySQL - connectdb@csulbconnect.ddns.net" uuid="a909f1e7-c938-4302-b84e-360a6312c4e3">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://csulbconnect.ddns.net:3306/connectdb?user=connect&amp;password=c0nn3ct</jdbc-url>
+      <jdbc-url>jdbc:mysql://csulbconnect.cbd57tt7k2cb.us-west-1.rds.amazonaws.com:3306/csulbconnect</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

@@ -1,310 +1,278 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - springtest@35.184.152.186" uuid="28a43f4b-9fe7-4986-8b5b-c58e524b5e74">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="MySQL - connectdb@csulbconnect.ddns.net" uuid="a909f1e7-c938-4302-b84e-360a6312c4e3">
-    <database-info product="MySQL" version="5.7.21-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+  <data-source name="MySQL - csulbconnect@csulbconnect.cbd57tt7k2cb.us-west-1.rds.amazonaws.com" uuid="9d77d420-bcde-4eea-875c-62419f9ea6f0">
+    <database-info product="MySQL" version="5.6.39-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
-      <schema id="1" name="connectdb"/>
+      <schema id="1" name="csulbconnect"/>
       <table id="2" parent="1" name="attendances"/>
       <table id="3" parent="1" name="events"/>
       <table id="4" parent="1" name="groups"/>
       <table id="5" parent="1" name="signup"/>
       <table id="6" parent="1" name="users"/>
       <table id="7" parent="1" name="users_groups"/>
-      <routine id="8" parent="1" name="userConfirmation">
-        <routine-kind>PROCEDURE</routine-kind>
-      </routine>
-      <routine id="9" parent="1" name="userSignUp">
-        <routine-kind>PROCEDURE</routine-kind>
-      </routine>
-      <routine id="10" parent="1" name="verifyLogin">
-        <routine-kind>PROCEDURE</routine-kind>
-      </routine>
-      <column id="11" parent="2" name="eId">
+      <column id="8" parent="2" name="eId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="12" parent="2" name="uId">
+      <column id="9" parent="2" name="uId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="13" parent="2" name="eStored">
+      <column id="10" parent="2" name="eStored">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="14" parent="2" name="aStatus">
+      <column id="11" parent="2" name="aStatus">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;A&apos;</default-expression>
       </column>
-      <index id="15" parent="2" name="user_attending_fk">
+      <index id="12" parent="2" name="user_attending_fk">
         <columns>uId</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="16" parent="2" name="PRIMARY">
+      <key id="13" parent="2" name="PRIMARY">
         <columns>eId
 uId</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="17" parent="2" name="event_attended_fk">
+      <foreign-key id="14" parent="2" name="event_attended_fk">
         <columns>eId</columns>
         <ref-key>~.events.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="18" parent="2" name="user_attending_fk">
+      <foreign-key id="15" parent="2" name="user_attending_fk">
         <columns>uId</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="19" parent="3" name="eId">
+      <column id="16" parent="3" name="eId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="20" parent="3" name="eName">
+      <column id="17" parent="3" name="eName">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="21" parent="3" name="eLocation">
+      <column id="18" parent="3" name="eLocation">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="22" parent="3" name="eDate">
+      <column id="19" parent="3" name="eDate">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="23" parent="3" name="eDescription">
+      <column id="20" parent="3" name="eDescription">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="24" parent="3" name="eStored">
+      <column id="21" parent="3" name="eStored">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="25" parent="3" name="eStatus">
+      <column id="22" parent="3" name="eStatus">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;A&apos;</default-expression>
       </column>
-      <column id="26" parent="3" name="uId">
+      <column id="23" parent="3" name="uId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="27" parent="3" name="gId">
+      <column id="24" parent="3" name="gId">
         <data-type>int(11)</data-type>
       </column>
-      <index id="28" parent="3" name="group_organize_events_fk">
+      <index id="25" parent="3" name="group_organize_events_fk">
         <columns>gId</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="29" parent="3" name="user_host_events_fk">
+      <index id="26" parent="3" name="user_host_events_fk">
         <columns>uId</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="30" parent="3" name="PRIMARY">
+      <key id="27" parent="3" name="PRIMARY">
         <columns>eId</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="31" parent="3" name="group_organize_events_fk">
+      <foreign-key id="28" parent="3" name="group_organize_events_fk">
         <columns>gId</columns>
         <ref-key>~.groups.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="32" parent="3" name="user_host_events_fk">
+      <foreign-key id="29" parent="3" name="user_host_events_fk">
         <columns>uId</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="33" parent="4" name="gId">
+      <column id="30" parent="4" name="gId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="34" parent="4" name="gName">
+      <column id="31" parent="4" name="gName">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="35" parent="4" name="gAboutUs">
+      <column id="32" parent="4" name="gAboutUs">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="36" parent="4" name="gImage">
+      <column id="33" parent="4" name="gImage">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="37" parent="4" name="gEmail">
+      <column id="34" parent="4" name="gEmail">
         <data-type>varchar(80)</data-type>
       </column>
-      <column id="38" parent="4" name="gOrg">
+      <column id="35" parent="4" name="gOrg">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
-      <column id="39" parent="4" name="gStored">
+      <column id="36" parent="4" name="gStored">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="40" parent="4" name="gStatus">
+      <column id="37" parent="4" name="gStatus">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;A&apos;</default-expression>
       </column>
-      <column id="41" parent="4" name="uId">
+      <column id="38" parent="4" name="uId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="42" parent="4" name="group_hosted_by_fk">
+      <index id="39" parent="4" name="group_hosted_by_fk">
         <columns>uId</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="43" parent="4" name="PRIMARY">
+      <key id="40" parent="4" name="PRIMARY">
         <columns>gId</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="44" parent="4" name="group_hosted_by_fk">
+      <foreign-key id="41" parent="4" name="group_hosted_by_fk">
         <columns>uId</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="45" parent="5" name="sEmail">
+      <column id="42" parent="5" name="sEmail">
         <mandatory>1</mandatory>
         <data-type>varchar(80)</data-type>
       </column>
-      <column id="46" parent="5" name="sName">
+      <column id="43" parent="5" name="sFirstName">
         <mandatory>1</mandatory>
-        <data-type>varchar(80)</data-type>
+        <data-type>varchar(45)</data-type>
       </column>
-      <column id="47" parent="5" name="sPassword">
+      <column id="44" parent="5" name="sPassword">
         <mandatory>1</mandatory>
-        <data-type>varchar(15)</data-type>
+        <data-type>varchar(90)</data-type>
       </column>
-      <column id="48" parent="5" name="sCode">
+      <column id="45" parent="5" name="sCode">
         <data-type>int(11)</data-type>
       </column>
-      <key id="49" parent="5" name="PRIMARY">
+      <column id="46" parent="5" name="sLastName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="47" parent="5" name="PRIMARY">
         <columns>sEmail</columns>
         <primary>1</primary>
       </key>
-      <column id="50" parent="6" name="uId">
+      <column id="48" parent="6" name="uId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="51" parent="6" name="uName">
+      <column id="49" parent="6" name="uFirstName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="50" parent="6" name="uEmail">
         <mandatory>1</mandatory>
         <data-type>varchar(80)</data-type>
       </column>
-      <column id="52" parent="6" name="uEmail">
+      <column id="51" parent="6" name="uPassword">
         <mandatory>1</mandatory>
-        <data-type>varchar(80)</data-type>
+        <data-type>varchar(90)</data-type>
       </column>
-      <column id="53" parent="6" name="uPassword">
-        <mandatory>1</mandatory>
-        <data-type>varchar(15)</data-type>
-      </column>
-      <column id="54" parent="6" name="uLastLogin">
+      <column id="52" parent="6" name="uLastLogin">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="55" parent="6" name="uStored">
+      <column id="53" parent="6" name="uStored">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="56" parent="6" name="uStatus">
+      <column id="54" parent="6" name="uStatus">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;A&apos;</default-expression>
       </column>
-      <key id="57" parent="6" name="PRIMARY">
+      <column id="55" parent="6" name="uLastName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="56" parent="6" name="PRIMARY">
         <columns>uId</columns>
         <primary>1</primary>
       </key>
-      <column id="58" parent="7" name="uId">
+      <column id="57" parent="7" name="uId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="59" parent="7" name="gId">
+      <column id="58" parent="7" name="gId">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="60" parent="7" name="organizer">
+      <column id="59" parent="7" name="organizer">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;N&apos;</default-expression>
       </column>
-      <column id="61" parent="7" name="ugStored">
+      <column id="60" parent="7" name="ugStored">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
         <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
       </column>
-      <column id="62" parent="7" name="ugStatus">
+      <column id="61" parent="7" name="ugStatus">
         <mandatory>1</mandatory>
         <data-type>char(1)</data-type>
         <default-expression>&apos;A&apos;</default-expression>
       </column>
-      <index id="63" parent="7" name="group_joined_by_fk">
+      <index id="62" parent="7" name="group_joined_by_fk">
         <columns>gId</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="64" parent="7" name="PRIMARY">
+      <key id="63" parent="7" name="PRIMARY">
         <columns>uId
 gId</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="65" parent="7" name="group_joined_by_fk">
+      <foreign-key id="64" parent="7" name="group_joined_by_fk">
         <columns>gId</columns>
         <ref-key>~.groups.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="66" parent="7" name="user_joined_group_fk">
+      <foreign-key id="65" parent="7" name="user_joined_group_fk">
         <columns>uId</columns>
         <ref-key>~.users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <argument id="67" parent="8" name="email">
-        <direction>IN</direction>
-        <data-type>varchar(80)</data-type>
-      </argument>
-      <argument id="68" parent="8" name="code">
-        <direction>IN</direction>
-        <data-type>int(11)</data-type>
-      </argument>
-      <argument id="69" parent="9" name="email">
-        <direction>IN</direction>
-        <data-type>varchar(80)</data-type>
-      </argument>
-      <argument id="70" parent="9" name="userName">
-        <direction>IN</direction>
-        <data-type>varchar(80)</data-type>
-      </argument>
-      <argument id="71" parent="9" name="password">
-        <direction>IN</direction>
-        <data-type>varchar(15)</data-type>
-      </argument>
-      <argument id="72" parent="10" name="email">
-        <direction>IN</direction>
-        <data-type>varchar(80)</data-type>
-      </argument>
-      <argument id="73" parent="10" name="password">
-        <direction>IN</direction>
-        <data-type>varchar(15)</data-type>
-      </argument>
     </database-model>
   </data-source>
 </component>
