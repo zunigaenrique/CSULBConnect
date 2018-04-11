@@ -3,6 +3,6 @@
  */
 var MAIN_MODULE=(function(){
     $(document).click(function(){
-        window.location.replace("/reg");
+        window.location.replace("/login");
     })
 })();

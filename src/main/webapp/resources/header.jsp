@@ -54,7 +54,7 @@
                 <ul class="dropdown-menu">
                     <!-- <li><a class="nav-link" href="#">Page 1-1</a></li> -->
                     <li><a class="nav-link" href="#">My Events</a></li>
-                    <li><a class="nav-link" href="${pageContext.request.contextPath}/reg">Sign Out</a></li>
+                    <li><a class="nav-link" href="${pageContext.request.contextPath}/login">Sign Out</a></li>
                 </ul>
             </li>
         </ul>

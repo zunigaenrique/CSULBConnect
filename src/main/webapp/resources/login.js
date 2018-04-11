@@ -61,7 +61,7 @@ var LOGIN_MODULE=(function(){
                         message: 'Required.'
                     },
                     stringLength:{
-                        min:4
+                        min:3
                     }
                 }
             },
@@ -71,7 +71,7 @@ var LOGIN_MODULE=(function(){
                         message: 'Required.'
                     },
                     stringLength:{
-                        min:4
+                        min:3
                     }
                 }
             },
@@ -128,7 +128,7 @@ var LOGIN_MODULE=(function(){
         e.preventDefault();
         var $form=$(e.target);
         var request=$.ajax({
-            url:"/reg",
+            url:"/login",
             type:'POST',
             data:$("#reg1").serialize()
         });

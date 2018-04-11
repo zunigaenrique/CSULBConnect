@@ -1,6 +1,6 @@
 package spring.models;
 
-public class Users {
+public class User {
     private Long uid;
     private String ufirstname;
     private String uemail;
@@ -75,7 +75,7 @@ public class Users {
     }
 
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "uid=" + uid +
                 ", ufirstname='" + ufirstname + '\'' +
                 ", uemail='" + uemail + '\'' +

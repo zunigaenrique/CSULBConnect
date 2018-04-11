@@ -8,10 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 import spring.models.Signup;
 import spring.services.UserService;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
 
@@ -31,16 +33,16 @@ public class MainController {
         return mav;
 
     }
-    @RequestMapping(value="/reg", method= RequestMethod.GET)
+    @RequestMapping(value="/login", method= RequestMethod.GET)
     public ModelAndView reg(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("login");
         return mav;
 
     }
-    @RequestMapping(value="/reg", method= RequestMethod.POST)
+    @RequestMapping(value="/login", method= RequestMethod.POST)
     public ModelAndView regSubmit(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Signup signup=new Signup();
-        signup.setsEmail(request.getParameter("regEmail"));
+        signup.setsEmail(request.getParameter("regEmail".toLowerCase()));
         signup.setsFirstName(request.getParameter("regName"));
         signup.setsLastName(request.getParameter("regLName"));
         signup.setsPassword(request.getParameter("regPass"));
@@ -70,8 +72,7 @@ public class MainController {
         try {
             userService.confirm(confirmationEmail,confirmationNumber);
         } catch (Exception e) {
-            logger.warning("exception caught in controller");
-
+            logger.warning("something went horribly, horribly wrong");
             e.printStackTrace();
         ModelAndView mav=new ModelAndView("blank");
         mav.addObject("message","<h3 class=\"col text-center\">Please refresh and try again.</h3>");
@@ -81,5 +82,21 @@ public class MainController {
         mav.addObject("message","<h3 class=\"col text-center\">Success! You may now sign in.</h3>");
         return mav;
     }
+//    @RequestMapping(value="/testremove", method= RequestMethod.GET)
+//    public ModelAndView tr(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        ModelAndView mav = new ModelAndView("registerconf");
+//        userService.removeSignup("abc@abc");
+//        return mav;
+//    }
+//    @RequestMapping(value="/testregistered", method= RequestMethod.GET)
+//    public ModelAndView treg(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        ModelAndView mav = new ModelAndView("registerconf");
+//        try {
+//            userService.isRegistered("abc@abc");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return mav;
+//    }
 
 }
