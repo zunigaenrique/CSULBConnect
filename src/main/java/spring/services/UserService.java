@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
 
 /**
  * Created by lin on 4/6/2018.
@@ -22,7 +21,7 @@ public class UserService {
     public UserDao userDao;
     private MessageDigest messageDigest;
 
-    public void register(Signup signup) throws NoSuchAlgorithmException, MessagingException, Exception {
+    public void register(Signup signup) throws Exception {
         if(userDao.isRegistered(signup.getsEmail())){
             throw new Exception("already registered");
         }
