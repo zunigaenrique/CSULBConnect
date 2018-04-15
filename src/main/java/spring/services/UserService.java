@@ -1,8 +1,11 @@
 package spring.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import spring.DAOs.UserDao;
+import spring.DAOs.UserRepository;
 import spring.models.Signup;
+import spring.models.User;
 import sun.misc.BASE64Encoder;
 
 import java.security.MessageDigest;
@@ -19,6 +22,10 @@ public class UserService {
 
     @Autowired
     public UserDao userDao;
+    @Qualifier("userRepository")
+    @Autowired
+    private UserRepository userRepository;
+    @Qualifier("userRepository")
     private MessageDigest messageDigest;
 
     public void register(Signup signup) throws Exception {
@@ -33,6 +40,10 @@ public class UserService {
         signup.setsCode((int)(Math.random()*10000));
         userDao.register(signup);
         sendConfirmation(signup);
+    }
+
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 
     public void confirm(String confirmationEmail, int confirmationNumber) throws Exception {

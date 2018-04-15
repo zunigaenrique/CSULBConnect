@@ -23,7 +23,7 @@ public class UserDao {
 
     public void register(Signup signup) {
         String sql = "insert into signup values (?,?,?,?,?)";
-        jdbcTemplate.update(sql, signup.getsEmail(),signup.getsFirstName(),signup.getsPassword(),signup.getsCode(),signup.getsLastName());
+        jdbcTemplate.update(sql, new Object[] {signup.getsEmail(),signup.getsFirstName(),signup.getsPassword(),signup.getsCode(),signup.getsLastName()});
     }
 
     public boolean confirm(String confirmationEmail, int confirmationNumber) {
@@ -40,7 +40,7 @@ public class UserDao {
         List<Signup> signups=jdbcTemplate.query(sql, new SignupMapper());
         Signup s=signups.get(0);
         sql="insert into users (uFirstName, uLastName, uEmail, uPassword) values (?,?,?,?)";
-        jdbcTemplate.update(sql, s.getsFirstName(),s.getsLastName(),s.getsEmail(),s.getsPassword());
+        jdbcTemplate.update(sql, new Object[]{s.getsFirstName(),s.getsLastName(),s.getsEmail(),s.getsPassword()});
     }
 
     public void removeSignup(String email) {

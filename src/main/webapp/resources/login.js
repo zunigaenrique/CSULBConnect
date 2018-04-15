@@ -128,7 +128,7 @@ var LOGIN_MODULE=(function(){
         e.preventDefault();
         var $form=$(e.target);
         var request=$.ajax({
-            url:"/login",
+            url:"/reg",
             type:'POST',
             data:$("#reg1").serialize()
         });
@@ -153,5 +153,7 @@ var LOGIN_MODULE=(function(){
 
             enableReg2Validation();
         });
-    })();
+    });
+
+
 })();

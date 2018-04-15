@@ -70,19 +70,19 @@
 
                     <form class="align-items-center boxcontent">
                         <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Email</label>
-                            <div class="col-10">
-                                <input class="form-control" type="search" value="" id="example-search-input">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="loginEmail" class="col-2 col-form-label">Password</label>
+                            <label for="loginEmail" class="col-2 col-form-label">Email</label>
                             <div class="col-10">
                                 <input class="form-control" type="email" value="" id="loginEmail">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="loginPassword" class="col-2 col-form-label">Password</label>
+                            <div class="col-10">
+                                <input class="form-control" type="password" value="" id="loginPassword">
+                            </div>
+                        </div>
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="loginSubmit">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 
-
 @Controller
 public class MainController {
     private Logger logger= Logger.getLogger(MainController.class.getName());
@@ -39,15 +38,16 @@ public class MainController {
         return mav;
 
     }
-    @RequestMapping(value="/login", method= RequestMethod.POST)
+    @RequestMapping(value="/reg", method= RequestMethod.POST)
     public ModelAndView regSubmit(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Signup signup=new Signup();
-        signup.setsEmail(request.getParameter("regEmail".toLowerCase()));
+        String email=request.getParameter("regEmail").toLowerCase();
+        signup.setsEmail(email);
         signup.setsFirstName(request.getParameter("regName"));
         signup.setsLastName(request.getParameter("regLName"));
         signup.setsPassword(request.getParameter("regPass"));
-        ModelAndView mav = new ModelAndView("registerconf");
         System.out.print(signup.toString());
+        ModelAndView mav = new ModelAndView("registerconf");
         try {
             userService.register(signup);
         } catch (Exception e) {
@@ -82,12 +82,16 @@ public class MainController {
         mav.addObject("message","<h3 class=\"col text-center\">Success! You may now sign in.</h3>");
         return mav;
     }
-//    @RequestMapping(value="/testremove", method= RequestMethod.GET)
-//    public ModelAndView tr(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        ModelAndView mav = new ModelAndView("registerconf");
-//        userService.removeSignup("abc@abc");
-//        return mav;
-//    }
+    @RequestMapping(value="/sectest", method= RequestMethod.GET)
+    public ModelAndView st(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("registerconf");
+        return mav;
+    }
+    @RequestMapping(value="/sectestpub", method= RequestMethod.GET)
+    public ModelAndView stp(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("registerconf");
+        return mav;
+    }
 //    @RequestMapping(value="/testregistered", method= RequestMethod.GET)
 //    public ModelAndView treg(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        ModelAndView mav = new ModelAndView("registerconf");
