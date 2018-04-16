@@ -2,14 +2,13 @@ package spring.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import spring.DAOs.UserDao;
-import spring.DAOs.UserRepository;
 import spring.models.Signup;
 import spring.models.User;
 import sun.misc.BASE64Encoder;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import java.util.*;
 import javax.mail.*;
@@ -19,32 +18,27 @@ import javax.mail.internet.*;
  * Created by lin on 4/6/2018.
  */
 public class UserService {
-
     @Autowired
     public UserDao userDao;
-    @Qualifier("userRepository")
     @Autowired
-    private UserRepository userRepository;
-    @Qualifier("userRepository")
-    private MessageDigest messageDigest;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void register(Signup signup) throws Exception {
         if(userDao.isRegistered(signup.getsEmail())){
             throw new Exception("already registered");
         }
-        messageDigest=MessageDigest.getInstance("SHA-1");
-        messageDigest.update(signup.getsPassword().getBytes());
-        byte rawByte[]=messageDigest.digest();
-        String hashValue=(new BASE64Encoder()).encode(rawByte);
-        signup.setsPassword(hashValue);
+//        messageDigest=MessageDigest.getInstance("SHA-1");
+//        messageDigest.update(signup.getsPassword().getBytes());
+//        byte rawByte[]=messageDigest.digest();
+//        String hashValue=(new BASE64Encoder()).encode(rawByte);
+//        signup.setsPassword(hashValue);
+        signup.setsPassword(bCryptPasswordEncoder.encode(signup.getsPassword()));
+
         signup.setsCode((int)(Math.random()*10000));
         userDao.register(signup);
         sendConfirmation(signup);
     }
 
-    public User findByEmail(String email){
-        return userRepository.findByEmail(email);
-    }
 
     public void confirm(String confirmationEmail, int confirmationNumber) throws Exception {
         if(userDao.confirm(confirmationEmail,confirmationNumber)){

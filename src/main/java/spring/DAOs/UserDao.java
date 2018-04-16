@@ -14,11 +14,9 @@ import java.util.List;
 
 public class UserDao {
     @Autowired
-
-    DataSource datasource;
+    DataSource dataSource;
 
     @Autowired
-
     JdbcTemplate jdbcTemplate;
 
     public void register(Signup signup) {

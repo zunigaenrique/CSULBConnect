@@ -24,18 +24,12 @@ public class MainController {
 
     @RequestMapping(value="/index", method= RequestMethod.GET)
     public ModelAndView test(HttpServletRequest request, HttpServletResponse response) {
-
-        ModelAndView mav = new ModelAndView("index");
-
-//        mav.addObject("", new Login());
-
-        return mav;
+        return new ModelAndView("index");
 
     }
     @RequestMapping(value="/login", method= RequestMethod.GET)
     public ModelAndView reg(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("login");
-        return mav;
+        return new ModelAndView("login");
 
     }
     @RequestMapping(value="/reg", method= RequestMethod.POST)
@@ -47,19 +41,17 @@ public class MainController {
         signup.setsLastName(request.getParameter("regLName"));
         signup.setsPassword(request.getParameter("regPass"));
         System.out.print(signup.toString());
-        ModelAndView mav = new ModelAndView("registerconf");
         try {
             userService.register(signup);
         } catch (Exception e) {
             response.sendError(500);
         }
-        return mav;
+        return new ModelAndView("registerconf");
     }
 
     @RequestMapping(value="/conf", method= RequestMethod.GET)
     public ModelAndView confirm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ModelAndView mav = new ModelAndView("registerconf");
-        return mav;
+        return new ModelAndView("registerconf");
     }
 
     @RequestMapping(value="/regConfirm", method=RequestMethod.POST)
@@ -84,13 +76,15 @@ public class MainController {
     }
     @RequestMapping(value="/sectest", method= RequestMethod.GET)
     public ModelAndView st(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("registerconf");
-        return mav;
+        return new ModelAndView("registerconf");
     }
     @RequestMapping(value="/sectestpub", method= RequestMethod.GET)
     public ModelAndView stp(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("registerconf");
-        return mav;
+        return new ModelAndView("registerconf");
+    }
+    @RequestMapping(value="/test", method= RequestMethod.GET)
+    public ModelAndView bl(HttpServletRequest request, HttpServletResponse response) {
+        return new ModelAndView("blank").addObject("message","message here");
     }
 //    @RequestMapping(value="/testregistered", method= RequestMethod.GET)
 //    public ModelAndView treg(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -12,13 +12,16 @@
     <context:annotation-config />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
         <property name="prefix" value="/jsp/" />
-
         <property name="suffix" value=".jsp" />
-
-
     </bean>
+
+    <!--<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://csulbconnect.cbd57tt7k2cb.us-west-1.rds.amazonaws.com:3306/csulbconnect" />-->
+        <!--<property name="username" value="csulbconnect" />-->
+        <!--<property name="password" value="haBJdYw86N" />-->
+    <!--</bean>-->
 
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/" />
